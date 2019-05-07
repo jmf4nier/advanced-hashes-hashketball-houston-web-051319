@@ -192,3 +192,20 @@ def player_numbers(team_name)
   end
   numbers
 end
+
+def player_stats(player_name)
+  statistics = []
+  game_hash.each do |team, team_info|
+   team_info.each do |description, data|
+     if description == :players
+       data.each do |player, stats|
+         if player == player_name
+            statistics = stats
+         end
+       end
+     end
+   end
+ end
+ statistics
+end
+#player_stats("Reggie Evans")
