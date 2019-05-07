@@ -174,3 +174,21 @@ def team_name
   end
   names
 end
+
+def player_numbers(team_name)
+  numbers = []
+  game_hash.each do |team, team_info|
+    team_info.each do |description, data|
+      if data.include?(team_name)
+        team_info.each do |description, data|
+          if description == :players
+            data.each do |player, stats|
+              numbers << stats[:number]
+            end
+          end
+        end
+      end
+    end
+  end
+  numbers
+end
