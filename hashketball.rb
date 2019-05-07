@@ -210,5 +210,35 @@ def player_stats(player_name)
 end
 #player_stats("Reggie Evans")
 
+def big_shoe_rebounds
+  rebounds = ""
+  def shoe_size
+    biggest_shoe = 0
+    game_hash.each do |team, team_info|
+      team_info.each do |description, data|
+        if description == :players
+          data.each do |player, stats|
+            if biggest_shoe == 0  || stats[:shoe] > biggest_shoe
+              biggest_shoe = stats[:shoe]
+            end
+          end
+        end
+      end
+    end
+    biggest_shoe
+  end
+  game_hash.each do |team, team_info|
+    team_info.each do |description, data|
+      if description == :players
+        data.each do |player, stats|
+          if stats[:shoe] === shoe_size
+            rebounds = stats[:rebounds]
+          end
+        end
+      end
+    end
+  end
+  rebounds 
+end
 
 
